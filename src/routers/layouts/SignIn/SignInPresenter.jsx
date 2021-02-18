@@ -25,18 +25,22 @@ const TextInput = styled.input`
 
 const SignInPresenter = ({
   moveLinkHandler,
-  loginUserHandler,
   inputUserId,
   inputPassword,
+  loginHandler,
 }) => {
   return (
     <Wrapper dr={`column`} height={`100vh`}>
       <Wrapper dr={`column`}>
         <TextInput placeholder={`ID...`} {...inputUserId} />
-        <TextInput placeholder={`PASSWORD...`} {...inputPassword} />
+        <TextInput
+          placeholder={`PASSWORD...`}
+          {...inputPassword}
+          type="password"
+        />
       </Wrapper>
       <Wrapper>
-        <MainButton width={`60px`} height={`40px`} onClick={loginUserHandler}>
+        <MainButton width={`60px`} height={`40px`} onClick={loginHandler}>
           로그인
         </MainButton>
         <MainButton

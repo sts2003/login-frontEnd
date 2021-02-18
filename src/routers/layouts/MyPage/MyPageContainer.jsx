@@ -95,7 +95,7 @@ const MyPageContainer = ({ history }) => {
     if (data.deleteUser) {
       toast.info("성공적으로 처리 되었습니다.");
       userDetailRefetch();
-      window.sessionStorage.removeItem("login");
+      sessionStorage.removeItem("login");
       history.push("/");
     } else {
       toast.error("잠시후 다시 시도해 주세요.");
@@ -127,13 +127,14 @@ const MyPageContainer = ({ history }) => {
     setIsDialogOpen(!isDialogOpen);
     if (!isDialogOpen) {
       setValue({
-        userId: JSON.parse(isLogin[0]).getUserDetail.userId,
-        email: JSON.parse(isLogin[0]).getUserDetail.email,
-        name: JSON.parse(isLogin[0]).getUserDetail.name,
-        mobile: JSON.parse(isLogin[0]).getUserDetail.mobile,
-        zoneCode: JSON.parse(isLogin[0]).getUserDetail.zoneCode,
-        address: JSON.parse(isLogin[0]).getUserDetail.address,
-        detailAddress: JSON.parse(isLogin[0]).getUserDetail.detailAddress,
+        userId: userDetailData && userDetailData.getUserDetail.userId,
+        email: userDetailData && userDetailData.getUserDetail.email,
+        name: userDetailData && userDetailData.getUserDetail.name,
+        mobile: userDetailData && userDetailData.getUserDetail.mobile,
+        zoneCode: userDetailData && userDetailData.getUserDetail.zoneCode,
+        address: userDetailData && userDetailData.getUserDetail.address,
+        detailAddress:
+          userDetailData && userDetailData.getUserDetail.detailAddress,
       });
     }
   };

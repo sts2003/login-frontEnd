@@ -1,12 +1,20 @@
 import { gql } from "apollo-boost";
 
 export const GET_USER_FOR_LOGIN = gql`
-  query getUserForLogin($userId: String!, $userPassword: String!) {
+  mutation getUserForLogin($userId: String!, $userPassword: String!) {
     getUserForLogin(userId: $userId, userPassword: $userPassword) {
       loginResult
-      userData {
-        _id
-      }
+      userData
+    }
+  }
+`;
+
+export const GET_COOKIES = gql`
+  query getCookie($cookieToken: String!) {
+    getCookie(cookieToken: $cookieToken) {
+      _id
+      userId
+      userPassword
     }
   }
 `;
